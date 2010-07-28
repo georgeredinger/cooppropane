@@ -1,7 +1,7 @@
 $:.unshift File.join(File.dirname(__FILE__),'..','lib')
 require 'test/unit'
 require 'rubygems'
-require 'open-uri'
+#require 'open-uri'
 require 'nokogiri'
 require 'find'
 class ScrapeTest < Test::Unit::TestCase
