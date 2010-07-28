@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Propane Prices</title>
+</head>
+<body>
+<pre>
+
+<?php
+
+function scrapecoop($d,$url)
+{
+
+	if($_SERVER['DOCUMENT_ROOT']){
+	       $dr = $_SERVER['DOCUMENT_ROOT'];
+	}else
+	{
+	       $dr = ".";
+	}
+
+       include_once($dr . '/simple_html_dom.php');
+
+       $html = file_get_html($url);
+       #empericly determined tables and cells, pray for stability
+       $table = $html->find('table',6);
+       $cells = $table->find('td');
+       $betterEqual251_500 = $cells[28]->plaintext ;
+       $betterEqualGallons = $cells[29]->plaintext ;
+       $thePrice = (float)($cells[30]->plaintext);
+       $betterEqual501_1000=$cells[31]->plaintext ;
+       #$date = date('U');
+       if(preg_match('/251-500/',$betterEqual251_500))
+       {
+           if(preg_match('/gallons/',$betterEqualGallons))
+           {
+               if(preg_match('/501-1000/',$betterEqual501_1000))
+               {
+                   print $d .  ' : ' .  $thePrice ; 
+		   echo " ";
+                   include_once ($dr . '/tweet.php');
+                   include_once ($dr . '/getLastPropanePrice.php');
+		   $lastPrice=getLastPrice();
+
+		   if($thePrice != $lastPrice)
+                      tweet('COOPpropane','90kj33k40-vnj21=-', $d . ':' .  $thePrice);
+               }
+               else 
+               {
+                   echo $date . ' bogus <br>';
+                   echo '$betterEqual501_1000' . $betterEqual501_1000 . '<br>';
+               }   
+           }
+           else
+           {
+               echo $date . ' bogus <br>';
+               echo '$betterEqualGallons:' . $betterEqualGallons . '<br>';
+           }
+       }
+       else
+       {
+         echo $date . ' bogus <br>';
+         echo '$betterEqual251_500:' . $betterEqual251_500 . '<br>';
+       }
+}
+
+
+     
+     foreach(array_slice($argv,1,200) as $arg)
+     {
+       $parts = explode('_',$arg);
+       $d = $parts[0] . '-' . $parts[1] . '-' . $parts[2]; 
+       scrapecoop($d,$arg);
+
+     }
+    ?>
+
+</pre>
+</body>
+</html>
