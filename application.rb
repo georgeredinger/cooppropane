@@ -37,6 +37,8 @@ class SkeletonApp < Sinatra::Base
 
   get '/about' do
     haml :about, :layout => :'layouts/default'
+    #query the database for prices and put in array
+    # construct flot graph for view...
   end
 
   get '/form' do
@@ -46,10 +48,18 @@ class SkeletonApp < Sinatra::Base
        </form> }
   end
 
+  get '/update' do
+    haml :update , :layout => :'layouts/default'
+    #call the update thingy here...
+    #insert into database if it's new...
+  end
+
+
   post '/name' do
     haml "Hello #{ params[:person] }", :layout => :'layouts/default'
   end
 
+  
   get "/user/:id" do
     "You're looking for user with id #{ params[:id] }"
   end

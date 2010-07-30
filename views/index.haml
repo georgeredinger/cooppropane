@@ -1,78 +1,31 @@
 .grid_8
-.h2 Eventually this app will track propane prices
-.h2 first some PHP from a previous attempt 
-:plain
+.h2 Propane Price History
+.p
+  pretty graph of propane price history from co-op propane...
 
-  <pre>
-  
-  < ? php
-  
-  function scrapecoop($d,$url)
-  {
-  
-  	if($_SERVER['DOCUMENT_ROOT']){
-  	       $dr = $_SERVER['DOCUMENT_ROOT'];
-  	}else
-  	{
-  	       $dr = ".";
-  	}
-  
-         include_once($dr . '/simple_html_dom.php');
-  
-         $html = file_get_html($url);
-         #empericly determined tables and cells, pray for stability
-         $table = $html->find('table',6);
-         $cells = $table->find('td');
-         $betterEqual251_500 = $cells[28]->plaintext ;
-         $betterEqualGallons = $cells[29]->plaintext ;
-         $thePrice = (float)($cells[30]->plaintext);
-         $betterEqual501_1000=$cells[31]->plaintext ;
-         #$date = date('U');
-         if(preg_match('/251-500/',$betterEqual251_500))
-         {
-             if(preg_match('/gallons/',$betterEqualGallons))
-             {
-                 if(preg_match('/501-1000/',$betterEqual501_1000))
-                 {
-                     print $d .  ' : ' .  $thePrice ; 
-  		   echo " ";
-                     include_once ($dr . '/tweet.php');
-                     include_once ($dr . '/getLastPropanePrice.php');
-  		   $lastPrice=getLastPrice();
-  
-  		   if($thePrice != $lastPrice)
-                        tweet('COOPpropane','90kj33k40-vnj21=-', $d . ':' .  $thePrice);
-                 }
-                 else 
-                 {
-                     echo $date . ' bogus <br>';
-                     echo '$betterEqual501_1000' . $betterEqual501_1000 . '<br>';
-                 }   
-             }
-             else
-             {
-                 echo $date . ' bogus <br>';
-                 echo '$betterEqualGallons:' . $betterEqualGallons . '<br>';
-             }
-         }
-         else
-         {
-           echo $date . ' bogus <br>';
-           echo '$betterEqual251_500:' . $betterEqual251_500 . '<br>';
-         }
-  }
-  
-  
-       
-       foreach(array_slice($argv,1,200) as $arg)
-       {
-         $parts = explode('_',$arg);
-         $d = $parts[0] . '-' . $parts[1] . '-' . $parts[2]; 
-         scrapecoop($d,$arg);
-  
-       }
-      ? >
-  
-  
-  </pre>
+#placeholder
+  .p 
+    this is supposed to be a plot
+
+.p 
+  the graph should be above here 
+  in a div called place holder
+
+in a div called place holder
+
+:javascript
+  $(function () {
+      var d1 = [];
+      for (var i = 0; i < 14; i += 0.5)
+        d1.push([i, Math.sin(i)]);
+                   
+        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+                         
+        // a null signifies separate line segments
+        var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+                                      
+        $.plot($("#placeholder"), [ d1, d2, d3 ]);
+  });
+
+
   

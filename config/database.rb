@@ -16,3 +16,4 @@ else
     :adapter  => 'postgres'
   })
 end
+
