@@ -4,5 +4,9 @@ dm-core --version 0.10.2
 data_objects --version 0.10.2
 do_postgres --version 0.10.2
 nokogiri
+rubygems
+dm-migrations
+dm-types
+
 
 
