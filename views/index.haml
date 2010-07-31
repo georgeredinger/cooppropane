@@ -1,31 +1,17 @@
 .grid_8
-.h2 Propane Price History
-.p
-  pretty graph of propane price history from co-op propane...
+%h2 Propane Price History
+%p
 
-#placeholder
-  .p 
-    this is supposed to be a plot
+#coop
+  %p 
+    this is a time series plot
+%p
+  %table{:cellpadding => 5, :cellspacing =>3, :bgcolor => "#FFFF66", :border => 1}
+    - @prices.each do |p|
+      %tr
+        %td=p.scraped_at.strftime("%b: ")
+        %td=p.price
 
-.p 
-  the graph should be above here 
-  in a div called place holder
-
-in a div called place holder
-
-:javascript
-  $(function () {
-      var d1 = [];
-      for (var i = 0; i < 14; i += 0.5)
-        d1.push([i, Math.sin(i)]);
-                   
-        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
-                         
-        // a null signifies separate line segments
-        var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
-                                      
-        $.plot($("#placeholder"), [ d1, d2, d3 ]);
-  });
-
-
-  
+<script>
+= @plot
+</script>

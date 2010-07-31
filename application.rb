@@ -1,9 +1,17 @@
 require 'rubygems'
 require 'haml'
+require 'dm-migrations'
+require 'dm-migrations/adapters/dm-mysql-adapter' 
 require 'sinatra/base'
 require 'config/database'
 require 'haml'
 require 'sass'
+require 'logger'
+require 'lib/makeplot'
+DataMapper.auto_upgrade!
+
+#base.table_exists?(Price) or database.save(Price)
+
 
 class SkeletonApp < Sinatra::Base
   set :session, true
@@ -32,6 +40,8 @@ class SkeletonApp < Sinatra::Base
   end
 
   get '/' do
+    @prices = Prices.all
+    @plot = makeplot @prices
     haml :index, :layout => :'layouts/default'
   end
 
@@ -59,6 +69,9 @@ class SkeletonApp < Sinatra::Base
     haml "Hello #{ params[:person] }", :layout => :'layouts/default'
   end
 
+  get "/env" do
+    haml "environment = #{ENV['RACK_ENV']}"
+  end
   
   get "/user/:id" do
     "You're looking for user with id #{ params[:id] }"

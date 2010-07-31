@@ -1,25 +1,3 @@
-$default_rounding: 3px
-
-=top_rounding($rounding: $default_rounding)
-  -moz-border-radius-topleft: $rounding
-  -webkit-border-top-left-radius: $rounding
-  border-top-left-radius: $rounding
-  -moz-border-radius-topright: $rounding
-  -webkit-border-top-right-radius: $rounding
-  border-top-right-radius: $rounding
-
-=bottom_rounding($rounding: $default_rounding)
-  -moz-border-radius-bottomleft: $rounding
-  -webkit-border-bottom-left-radius: $rounding
-  border-bottom-left-radius: $rounding
-  -moz-border-radius-bottomright: $rounding
-  -webkit-border-bottom-right-radius: $rounding
-  border-bottom-right-radius: $rounding
-
-=full_rounding($rounding: $default_rounding)
-  +top_rounding($rounding)
-  +bottom_rounding($rounding)
-
 .top_nav_wrapper
   width: 100%
   background-color: #eee
@@ -31,7 +9,7 @@ $default_rounding: 3px
   a
     color: #0D79A8
 
-#placeholder
+#coop
   width: 600px
   height: 300px
-
+  
