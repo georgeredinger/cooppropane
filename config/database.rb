@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'dm-core'
 require 'models'
-gem 'dm-sqlite-adapter', '~> 1.0.0' 
+#gem 'dm-sqlite-adapter', '~> 1.0.0' 
 require  'dm-migrations'
 DataMapper.setup(:default, ENV['DATABASE_URL']||"sqlite3://#{Dir.pwd}/development.db")
 #
