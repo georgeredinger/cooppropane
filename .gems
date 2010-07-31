@@ -6,6 +6,6 @@ do_postgres --version 0.10.2
 nokogiri
 dm-migrations
 dm-types
-
+dm-postgres-adapter
 
 
