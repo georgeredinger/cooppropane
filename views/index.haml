@@ -1,16 +1,7 @@
 .grid_8
 %h2 Propane Price History
-%p
 
 #coop
-  %p 
-    this is a time series plot
-%p
-  %table{:cellpadding => 5, :cellspacing =>3, :bgcolor => "#FFFF66", :border => 1}
-    - @prices.each do |p|
-      %tr
-        %td=p.scraped_at.strftime("%b: ")
-        %td=p.price
 
 <script>
 = @plot

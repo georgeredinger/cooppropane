@@ -12,7 +12,7 @@ $(function () {
 PLOT
 
 plottail=<<PLOT
-      $.plot($("#coop"), [d], { xaxis: { mode: "time" } });
+      $.plot($("#coop"), [d], { xaxis: { mode: "time", timeformat: "%y/%b" },points: {show: true},lines: {show:true} });
    
   
       $("#ninetynine").click(function () {

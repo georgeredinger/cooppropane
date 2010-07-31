@@ -1,6 +1,11 @@
 .grid_8
-  :markdown
-    Updated price
-    It was or was not actualy different
-    But, the value was ... something ... for today
-  = Time.now
+  %p
+    Price now is
+    = @scrapes
+    Last price is 
+    = @price_last.price
+    <br>
+    - if @scrapes.to_f.to_s == @price_last.price.to_s 
+      nothing new here
+    - else
+      New price !

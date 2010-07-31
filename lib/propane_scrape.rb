@@ -1,3 +1,4 @@
+require 'nokogiri'
 def propane_scrape(page)
    price=Array.new
       doc = Nokogiri::HTML(page)

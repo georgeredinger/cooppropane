@@ -8,6 +8,8 @@ require 'haml'
 require 'sass'
 require 'logger'
 require 'lib/makeplot'
+require 'open-uri'
+require 'lib/propane_scrape'
 DataMapper.auto_upgrade!
 
 #base.table_exists?(Price) or database.save(Price)
@@ -59,6 +61,19 @@ class SkeletonApp < Sinatra::Base
   end
 
   get '/update' do
+    page = open("http://www.co-openergy.org/prices.html")
+    prices=propane_scrape(page)
+    @scrapes= prices["251-500"]
+    @price_last = Prices.last
+    if @scrapes.to_f.to_s != @price_last.price.to_s 
+      p = Prices.new
+      p.attributes = {
+      :scraped_at => Time.parse(date),
+      :price =>  price.to_f
+      }
+      p.save
+    end
+ 
     haml :update , :layout => :'layouts/default'
     #call the update thingy here...
     #insert into database if it's new...
