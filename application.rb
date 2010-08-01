@@ -55,6 +55,5 @@ class SkeletonApp < Sinatra::Base
       @prices=checkprices
       haml :update , :layout => :'layouts/default'
    end
-
 end
 

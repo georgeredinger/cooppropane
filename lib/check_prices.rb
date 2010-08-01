@@ -22,16 +22,16 @@ def checkprices
       }
       p.save
       if defined? Heroku
-         Moonshado::Sms.configure do |config|
-            config.api_key = ENV['MOONSHADOSMS_URL']
-         end
-         sms = Moonshado::Sms.new("2085973127", "Coop Propane Price Change: #{@price_last} to #{price}")
-         status=sms.deliver_sms
+      #   Moonshado::Sms.configure do |config|
+      #      config.api_key = ENV['MOONSHADOSMS_URL']
+      #   end
+      #   sms = Moonshado::Sms.new("2085973127", "Coop Propane Price Change: #{@price_last} to #{price}")
+      #   status=sms.deliver_sms
       end
    end
    if defined? Heroku
-      sms = Moonshado::Sms.new("2085973127", "Coop Propane Price Change: #{@price_last} to #{price}")
-      status=sms.deliver_sms
+      #sms = Moonshado::Sms.new("2085973127", "Coop Propane Price Change: #{@price_last} to #{price}")
+      #status=sms.deliver_sms
    end
    {:new => price,:old => @price_last}
 end
