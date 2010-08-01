@@ -7,6 +7,7 @@ nokogiri
 dm-migrations
 dm-types
 dm-postgres-adapter
-exceptional
+newrelic_rpm
+
 
 
