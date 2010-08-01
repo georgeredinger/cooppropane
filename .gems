@@ -8,7 +8,5 @@ dm-migrations
 dm-types
 dm-postgres-adapter
 newrelic_rpm
-
-
-
 moonshado-sms
+exceptional
