@@ -10,6 +10,8 @@ require 'logger'
 require 'lib/makeplot'
 require 'open-uri'
 require 'lib/propane_scrape'
+require 'exceptional'
+
 DataMapper.auto_upgrade!
 
 #base.table_exists?(Price) or database.save(Price)
@@ -21,6 +23,31 @@ class SkeletonApp < Sinatra::Base
   set :root, File.dirname(__FILE__)
   set :public, Proc.new { File.join(root, "public") }
 
+  Exceptional.api_key = "67f8f0eb4c2455a00f11d7c080b98f8ca89c3234"
+
+  module Exceptional
+      def self.handle_sinatra(exception, uri, request, params)
+            e = Exceptional.parse(exception)
+
+            e.framework = "sinatra"
+            e.controller_name = uri
+            e.occurred_at = Time.now.strftime("%Y%m%d %H:%M:%S %Z")
+            e.environment = request.env.to_hash
+            e.url = uri
+            e.parameters = params.to_hash
+            Exceptional.post e
+      end
+  end
+
+  error do
+      Exceptional.handle_sinatra(request.env['sinatra.error'], request.env['REQUEST_URI'], request, params)
+  end
+
+  get '/' do
+      raise
+  end
+      end
+  end
   helpers do
     def link_to text, url=nil
       haml "%a{:href => '#{ url || text }'} #{ text }"

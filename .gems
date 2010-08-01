@@ -7,5 +7,6 @@ nokogiri
 dm-migrations
 dm-types
 dm-postgres-adapter
+exceptional
 
 
