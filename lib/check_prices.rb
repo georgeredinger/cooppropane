@@ -8,19 +8,30 @@ require 'models'
 require 'time'
 
 def checkprices
-    DataMapper.setup(:default, ENV['DATABASE_URL']||"sqlite3://#{Dir.pwd}/development.db")
-    page = open("http://www.co-openergy.org/prices.html")
-    prices=propane_scrape(page)
-    @scrapes= prices["251-500"]
-    @price_last = Prices.last.price
-    puts "new: #{@scrapes} existing:#{@price_last}"
-    if @scrapes.to_f.to_s != @price_last.to_s 
+   DataMapper.setup(:default, ENV['DATABASE_URL']||"sqlite3://#{Dir.pwd}/development.db")
+   page = open("http://www.co-openergy.org/prices.html")
+   prices=propane_scrape(page)
+   @scrapes= prices["251-500"]
+   price = @scrapes.to_f
+   @price_last = Prices.last.price
+   if price.to_s != @price_last.to_s
       p = Prices.new
       p.attributes = {
-      :scraped_at => Time.parse(date),
-      :price =>  price.to_f
+         :scraped_at => Time.parse(date),
+         :price =>  price.to_f
       }
       p.save
-    end
+      if defined? Heroku
+         Moonshado::Sms.configure do |config|
+            config.api_key = ENV['MOONSHADOSMS_URL']
+         end
+         sms = Moonshado::Sms.new("2085973127", "Coop Propane Price Change: #{@price_last} to #{price}")
+         status=sms.deliver_sms
+      end
+   end
+   if defined? Heroku
+      sms = Moonshado::Sms.new("2085973127", "Coop Propane Price Change: #{@price_last} to #{price}")
+      status=sms.deliver_sms
+   end
+   {:new => price,:old => @price_last}
 end
-

@@ -1,12 +1,12 @@
 .grid_8
   %p
     Price now is
-    = @scrapes
+    = @prices[:new]
     <br>
     Last price was 
-    = @price_last.price
+    = @prices[:old]
     <br>
-    - if @scrapes.to_f.to_s == @price_last.price.to_s 
+    - if @prices[:new].to_f.to_s == @prices[:old].to_s 
       Nothing new here
     - else
       New price !

@@ -10,6 +10,7 @@ require 'logger'
 require 'lib/makeplot'
 require 'open-uri'
 require 'lib/propane_scrape'
+require 'lib/check_prices'
 
 DataMapper.auto_upgrade!
 
@@ -21,7 +22,7 @@ class SkeletonApp < Sinatra::Base
    set :root, File.dirname(__FILE__)
    set :public, Proc.new { File.join(root, "public") }
 
-   helpers do
+     helpers do
       def link_to text, url=nil
          haml "%a{:href => '#{ url || text }'} #{ text }"
       end
@@ -51,18 +52,7 @@ class SkeletonApp < Sinatra::Base
    end
 
    get '/update' do
-      page = open("http://www.co-openergy.org/prices.html")
-      prices=propane_scrape(page)
-      @scrapes= prices["251-500"]
-      @price_last = Prices.last
-      if @scrapes.to_f.to_s != @price_last.price.to_s
-         p = Prices.new
-         p.attributes = {
-            :scraped_at => Time.parse(date),
-            :price =>  price.to_f
-         }
-         p.save
-      end
+      @prices=checkprices
       haml :update , :layout => :'layouts/default'
    end
 
