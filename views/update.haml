@@ -2,10 +2,11 @@
   %p
     Price now is
     = @scrapes
-    Last price is 
+    <br>
+    Last price was 
     = @price_last.price
     <br>
     - if @scrapes.to_f.to_s == @price_last.price.to_s 
-      nothing new here
+      Nothing new here
     - else
       New price !

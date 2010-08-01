@@ -13,7 +13,7 @@ require 'lib/propane_scrape'
 
 DataMapper.auto_upgrade!
 
-require 'newrelic_rpm' if  defined Heroku
+require 'newrelic_rpm' if  defined? Heroku
 
 class SkeletonApp < Sinatra::Base
    set :session, true
