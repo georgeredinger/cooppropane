@@ -9,7 +9,7 @@ require 'time'
 
 def checkprices
    DataMapper.setup(:default, ENV['DATABASE_URL']||"sqlite3://#{Dir.pwd}/development.db")
-   page = open("http://www.co-openergy.org/prices.html")
+   page = open("http://www.co-openergy.org/prices.html").read
    prices=propane_scrape(page)
    @scrapes= prices["251-500"]
    price = @scrapes.to_f
