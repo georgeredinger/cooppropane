@@ -46,7 +46,7 @@ class SkeletonApp < Sinatra::Base
    end
 
    get '/' do
-      @prices = Prices.all
+      @prices = Prices.all(:order => [ :scraped_at.asc ])
       @plot = makeplot @prices
       haml :index, :layout => :'layouts/default'
    end
