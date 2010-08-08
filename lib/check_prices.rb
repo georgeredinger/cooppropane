@@ -13,7 +13,7 @@ def checkprices
    prices=propane_scrape(page)
    @scrapes= prices["251-500"]
    price = @scrapes.to_f
-   @price_last = Prices.last.price
+   @price_last = Prices.all(:order => [:scraped_at]).last.price
    if price.to_s != @price_last.to_s
       p = Prices.new
       p.attributes = {
@@ -33,5 +33,6 @@ def checkprices
       #sms = Moonshado::Sms.new("2085973127", "Coop Propane Price Change: #{@price_last} to #{price}")
       #status=sms.deliver_sms
    end
+   puts "#{price},#{@price_last}"
    {:new => price,:old => @price_last}
 end

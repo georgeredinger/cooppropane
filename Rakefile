@@ -1,5 +1,7 @@
 require 'rake'
 require 'rake/testtask'
+Dir["#{File.dirname(__FILE__)}/lib/tasks/**/*.rake"].sort.each { |ext| load ext }
+
 namespace :db do
 
   require 'config/database'
@@ -38,5 +40,6 @@ Rake::TestTask.new('test:units') do |t|
   t.verbose = true
   t.warning = true
 end
+
 
 
