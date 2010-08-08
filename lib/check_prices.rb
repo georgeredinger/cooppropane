@@ -17,7 +17,7 @@ def checkprices
    if price.to_s != @price_last.to_s
       p = Prices.new
       p.attributes = {
-         :scraped_at => Time.parse(date),
+         :scraped_at => Time.now
          :price =>  price.to_f
       }
       p.save
