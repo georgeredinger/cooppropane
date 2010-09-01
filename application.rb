@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'haml'
 require 'dm-migrations'
 require 'dm-migrations/adapters/dm-mysql-adapter'
 require 'sinatra/base'
@@ -20,7 +19,7 @@ require 'exceptional'  if  defined? Heroku
 
 class SkeletonApp < Sinatra::Base
    set :session, true
-   set :haml, {:format => :html5 }
+   set :haml, {:format => :html4 }
    set :root, File.dirname(__FILE__)
    set :public, Proc.new { File.join(root, "public") }
    set :raise_errors, true
