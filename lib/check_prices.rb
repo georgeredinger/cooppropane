@@ -1,10 +1,10 @@
 require 'rubygems'
 require 'dm-core'
-require 'config/database'
+require_relative '../config/database'
 require 'open-uri'
-require 'lib/propane_scrape'
+require_relative  '../lib/propane_scrape'
 require 'sinatra'
-require 'models'
+require_relative '../models'
 require 'time'
 
 def checkprices

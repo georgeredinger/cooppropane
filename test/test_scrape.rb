@@ -9,13 +9,14 @@ class ScrapeTest < Test::Unit::TestCase
    def test_scrape_local
       Find.find('./test/') do |f|
          if f =~ /^.*\.html/
+					 puts "reading #{f}"
            prices=propane_scrape(open(f).read)
            puts prices.inspect 
          end
       end
    end
   def test_scrape_url
-    page = open("http://www.co-openergy.org/prices.html")
+    page = open("http://www.co-openergy.org")
     prices=propane_scrape(page)
     puts prices.inspect 
   end
