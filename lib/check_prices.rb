@@ -4,7 +4,7 @@ require '../config/database'
 require 'open-uri'
 require  '../lib/propane_scrape'
 require 'sinatra'
-require '../models'
+require 'models'
 require 'time'
 
 def checkprices
