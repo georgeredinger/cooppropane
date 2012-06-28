@@ -4,8 +4,8 @@ Dir["#{File.dirname(__FILE__)}/lib/tasks/**/*.rake"].sort.each { |ext| load ext 
 
 namespace :db do
 
-  require_relative 'config/database'
-  require_relative 'lib/seed'
+  require 'config/database'
+  require 'lib/seed'
 
   desc "Migrate the database (deletes data)"
   task :migrate do

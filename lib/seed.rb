@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'dm-core'
-require_relative '../models'
+require '../models'
 require 'time'
 #gem 'dm-sqlite-adapter', '~> 1.0.0' 
 require  'dm-migrations'
