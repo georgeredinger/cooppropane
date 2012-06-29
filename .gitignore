@@ -1,2 +1,5 @@
 *.db
+.bundle
+.rbenv-version
+.sass-cache
 

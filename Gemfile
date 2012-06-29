@@ -5,6 +5,7 @@ gem "dm-postgres-adapter"
 gem "dm-sqlite-adapter"
 gem "dm-types"
 gem "haml" 
+gem "sass" 
 gem "nokogiri"
 gem "sinatra" 
 gem 'data_objects' 

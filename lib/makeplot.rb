@@ -22,7 +22,15 @@ plottail=<<PLOT
                   minTickSize: [1, "month"],
                   min: (new Date("1999/01/01")).getTime(),
                   max: (new Date("2000/01/01")).getTime()
-              }
+              },
+							zoom: {
+							    interactive: true,
+									trigger: "dblclick", // or "click" for single click
+									amount: 1.5         // 2 = 200% (zoom in), 0.5 = 50% (zoom out)
+						},
+						pan: {
+						    interactive: true
+					 }
           });
       });
   });

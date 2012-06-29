@@ -19,7 +19,7 @@ def checkprices
 	
    price=propane_scrape(page)
 
-	 puts "price=#{price}"
+#	 puts "price=#{price}"
 	 
    #price = @scrapes.to_f
    @price_last = Prices.all(:order => [:scraped_at]).last.price
