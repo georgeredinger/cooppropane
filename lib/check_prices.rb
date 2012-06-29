@@ -12,9 +12,16 @@ def checkprices
    #page = open("http://www.co-openergy.org/prices.html").read
    #page = open("http://www.co-openergy.org/current-prices").read
    page = open("http://www.co-openergy.org").read
-   prices=propane_scrape(page)
-   @scrapes= prices["251-500"]
-   price = @scrapes.to_f
+#   prices=propane_scrape(page)
+#	 puts "Prices=#{prices}"
+#	 return
+#   @scrapes= prices["251-500"]
+	
+   price=propane_scrape(page)
+
+	 puts "price=#{price}"
+	 
+   #price = @scrapes.to_f
    @price_last = Prices.all(:order => [:scraped_at]).last.price
    if price.to_s != @price_last.to_s
       p = Prices.new
