@@ -13,8 +13,8 @@ require 'lib/check_prices'
 
 DataMapper.auto_upgrade!
 
-require 'newrelic_rpm' if  defined? Heroku
-require 'exceptional'  if  defined? Heroku
+#require 'newrelic_rpm' if  defined? Heroku
+#require 'exceptional'  if  defined? Heroku
 
 
 class SkeletonApp < Sinatra::Base
