@@ -15,5 +15,8 @@ gem 'dm-migrations'
 gem 'dm-postgres-adapter'
 gem 'dm-types'
 gem 'do_postgres'
-gem 'heroku'
 
+group :development do
+  gem 'heroku'
+  gem 'ruby-debug'
+end
