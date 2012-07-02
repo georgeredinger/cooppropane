@@ -42,7 +42,7 @@ nav {
 .xAxis > .tickLabel 
 {
 	margin-top:5px;
-	margin-left:-15px;
+	margin-left:0px;
 	margin-bottom: 10px;
 	-moz-transform:rotate(45deg);
 	-o-transform:rotate(45deg);

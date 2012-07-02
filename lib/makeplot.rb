@@ -24,11 +24,13 @@ plottail=<<PLOT
                   timeformat: "%y/%b",
                   points: {show: true},
                   lines: {show:true}, 
-                  zoomRange: [(new Date("1999/01/01")).getTime(),(new Date("2014/01/01")).getTime()],
-                  panRange: [(new Date("1999/01/01")).getTime(),(new Date("2014/01/01")).getTime()],
+                  zoomRange: [(new Date("1999/01/01")).getTime(),(Date.now())],
+                  panRange: [(new Date("1999/01/01")).getTime(),(Date.now())],
                   //minTickSize: [1, "month"],
 									ticks: 36,
-									alignTicksWithAxis: 1
+									alignTicksWithAxis: 1,
+									min:(new Date("2005/01/01")).getTime(),
+                  max:(Date.now())
 						},
 
           yaxis: {
