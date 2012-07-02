@@ -1,0 +1,43 @@
+body {
+	background-image: url(/images/propane.png);
+	background-repeat:no-repeat;
+//	background-position:center;
+	background-position: 96px 0px;
+}
+.button {
+  color:green;
+	position: absolute;
+	cursor: pointer;
+}
+#coop {
+	position: relative;
+	font-family: sans-serif;
+	font-size: 16px;
+	margin: 50px;
+	width: 800px;
+	height: 400px;
+	margin: 0 auto;
+}
+
+#coop div.button {
+	font-size: smaller;
+	color: #999;
+	background-color: #eee;
+	padding: 2px;
+}
+
+.container {
+  margin:0,0,0,10px auto;
+	width: 960px;
+	height: 400px;
+	}
+h2 {
+	width: 400px;
+	margin: 2% auto;
+}
+nav {
+ 	margin-left: 40px;
+	margin-top: 10px;
+}
+
+

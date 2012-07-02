@@ -4,9 +4,8 @@
     %meta{:charset => "UTF-8"}/
     %title Co-op Propane
     %link{:rel => 'stylesheet', :href => "/css/reset.css"}
-    %link{:rel => 'stylesheet', :href => "/css/960.css"}
     %link{:rel => 'stylesheet', :href => "/css/text.css"}
-    %link{:rel => 'stylesheet', :href => "/style.css"}
+    %link{:rel => 'stylesheet', :href => "/css/style.css"}
 
     %script{:src => "/js/jquery.min.js"}
     %script{:src => "/js/jquery-ui-1.8.21.custom.min.js"}
@@ -24,18 +23,15 @@
       src="/js/flot/excanvas.js"></script>
       <![endif]-->
   %body
-    .top_nav_wrapper
-      .container_12
-        .grid_12
-          = link_to_unless_current("home", "/")
-          |
-          = link_to_unless_current("about", "/about")
-          |
-          = link_to_unless_current("update","/update")
-      .clear
-
-    .container_12
-      .grid_12
-
+    %nav
+      = link_to_unless_current("home", "/")
+      |
+      = link_to_unless_current("about", "/about")
+      |
+      = link_to_unless_current("update","/update")
+    %header
+    .container
       = yield
+    %footer
+
 

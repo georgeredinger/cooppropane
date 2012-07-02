@@ -10,7 +10,6 @@ plothead=<<PLOT
 $(function () {
 PLOT
 plottail=<<PLOT
-      
       var placeholder = $("#coop");
       var options = {
           series: {
@@ -21,17 +20,16 @@ plottail=<<PLOT
           xaxis: {
                   mode: "time",
                   timeformat: "%y/%b",
- 
-                points: {show: true},
-             zoomRange: [(new Date("1999/01/01")).getTime(),(new Date("2012/01/01")).getTime()],
-            panRange: [(new Date("1999/01/01")).getTime(),(new Date("2012/01/01")).getTime()],
-            minTickSize: [1, "month"],
-            lines: {show:true} 
+                  points: {show: true},
+                  zoomRange: [(new Date("1999/01/01")).getTime(),(new Date("2014/01/01")).getTime()],
+                  panRange: [(new Date("1999/01/01")).getTime(),(new Date("2014/01/01")).getTime()],
+                  minTickSize: [1, "month"],
+                  lines: {show:true} 
 						},
 
           yaxis: {
-            zoomRange: [0, 3],
-            panRange: [0, 3]
+            zoomRange: [1, 3],
+            panRange: [1, 3]
           },
           zoom: {
               interactive: true
@@ -59,16 +57,11 @@ plottail=<<PLOT
                              + " &ndash; " + axes.yaxis.max.toFixed(2));
       });
   
-      // add zoom out button 
       $('<div class="button" style="right:20px;top:20px">zoom out</div>').appendTo(placeholder).click(function (e) {
           e.preventDefault();
           plot.zoomOut();
       });
   
-      // and add panning buttons
-      
-      // little helper for taking the repetitive work out of placing
-      // panning arrows
       function addArrow(dir, right, top, offset) {
           $('<img class="button" src="images/arrow-' + dir + '.gif" style="right:' + right + 'px;top:' + top + 'px">').appendTo(placeholder).click(function (e) {
               e.preventDefault();

@@ -13,17 +13,12 @@ require 'lib/check_prices'
 
 DataMapper.auto_upgrade!
 
-#require 'newrelic_rpm' if  defined? Heroku
-#require 'exceptional'  if  defined? Heroku
-
-
 class SkeletonApp < Sinatra::Base
    set :session, true
    set :haml, {:format => :html4 }
    set :root, File.dirname(__FILE__)
    set :public_folder, Proc.new { File.join(root, "public") }
    set :raise_errors, true
-#   use Rack::Exceptional, '67f8f0eb4c2455a00f11d7c080b98f8ca89c3234' if defined? Heroku
 
      helpers do
       def link_to text, url=nil
