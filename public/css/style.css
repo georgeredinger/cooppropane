@@ -34,6 +34,13 @@ h2 {
 	width: 400px;
 	margin: 2% auto;
 }
+h1 {
+	font-size: 70px;
+	width: 300px;
+	margin: 2% auto;
+	color:orange;
+	text-shadow: 0.1em 0.1em 0.2em red;
+}
 nav {
  	margin-left: 40px;
 	margin-top: 10px;
