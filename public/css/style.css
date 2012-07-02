@@ -31,8 +31,10 @@ body {
 	height: 400px;
 	}
 h2 {
-	width: 400px;
-	margin: 2% auto;
+	margin-top:25px;
+	width: 100%;
+	text-align:center;
+	text-shadow: 0.1em 0.1em 0.2em green;
 }
 h1 {
 	font-size: 70px;
