@@ -15,16 +15,20 @@ plottail=<<PLOT
           series: {
             points: {show:true},
             lines: { show: true },
-            shadowSize: 0
+            shadowSize: 0,
+						clickable:true,
+            hoverable: true
           },
           xaxis: {
                   mode: "time",
                   timeformat: "%y/%b",
                   points: {show: true},
+                  lines: {show:true}, 
                   zoomRange: [(new Date("1999/01/01")).getTime(),(new Date("2014/01/01")).getTime()],
                   panRange: [(new Date("1999/01/01")).getTime(),(new Date("2014/01/01")).getTime()],
-                  minTickSize: [1, "month"],
-                  lines: {show:true} 
+                  //minTickSize: [1, "month"],
+									ticks: 36,
+									alignTicksWithAxis: 1
 						},
 
           yaxis: {
@@ -61,7 +65,17 @@ plottail=<<PLOT
           e.preventDefault();
           plot.zoomOut();
       });
-  
+
+      function rotateXlabels() {
+        $('.xtickLabel').css({
+                              'top':'391px',
+                              '-webkit-transform':'rotate(45deg)',
+                              '-moz-transform':'rotate(45deg)',
+                              '-ms-transform':'rotate(45deg)',
+                              'filter':'progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5)'
+                            });
+      }
+
       function addArrow(dir, right, top, offset) {
           $('<img class="button" src="images/arrow-' + dir + '.gif" style="right:' + right + 'px;top:' + top + 'px">').appendTo(placeholder).click(function (e) {
               e.preventDefault();
@@ -73,7 +87,8 @@ plottail=<<PLOT
       addArrow('right', 25, 60, { left: 100 });
       addArrow('up', 40, 45, { top: -100 });
       addArrow('down', 40, 75, { top: 100 });
-  });
+//			rotateXlabels();
+   });
 
 PLOT
 

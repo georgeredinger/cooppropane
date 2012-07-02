@@ -1,7 +1,6 @@
 body {
 	background-image: url(/images/propane.png);
 	background-repeat:no-repeat;
-//	background-position:center;
 	background-position: 96px 0px;
 }
 .button {
@@ -40,4 +39,14 @@ nav {
 	margin-top: 10px;
 }
 
+.xAxis > .tickLabel 
+{
+	margin-top:5px;
+	margin-left:-15px;
+	margin-bottom: 10px;
+	-moz-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	-webkit-transform:rotate(90deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
 
