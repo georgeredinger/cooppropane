@@ -43,13 +43,15 @@ def checkprices
       #status=sms.deliver_sms
    end
    puts "#{price},#{@price_last}"
+#TODO: only tweet on price change
   Twitter.configure do |config|
 		config.consumer_key = ENV['Consumer_key']
 		config.consumer_secret = ENV['Consumer_secret']
 		config.oauth_token = ENV['Access_token']
 		config.oauth_token_secret = ENV['Access_token_secret']
 	end
-
-  Twitter.update("#{Time.now} #{price},#{@price_last}")
-	 	{:new => price,:old => @price_last}
+#TODO: why does Twitter.update allways thow an error?
+  Twitter.update("#{Time.now} #{price},#{@price_last}") rescue Twitter::Error
+	
+ 	{:new => price,:old => @price_last}
 end
