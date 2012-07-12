@@ -48,6 +48,7 @@ class SkeletonApp < Sinatra::Base
 
    get '/about' do
       haml :about, :layout => :'layouts/default'
+			ENV.each_pair {|key,value| puts "#{key}=#{value"}}
    end
 
    get '/update' do
@@ -55,7 +56,6 @@ class SkeletonApp < Sinatra::Base
       haml :update , :layout => :'layouts/default'
    end
 get '/tweet' do
-	puts ENV
   Twitter.configure do |config|
 		config.consumer_key = ENV['Consumer_key']
 		config.consumer_secret = ENV['Consumer_secret']
