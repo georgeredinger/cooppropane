@@ -1,4 +1,5 @@
 source "http://rubygems.org/"
+gem "multi_json", "~> 1.3.2"
 gem "nokogiri"
 gem "dm-migrations"
 gem "dm-postgres-adapter"
@@ -15,6 +16,7 @@ gem 'dm-migrations'
 gem 'dm-postgres-adapter'
 gem 'dm-types'
 gem 'do_postgres'
+gem 'twitter'
 
 group :development do
   gem 'heroku'

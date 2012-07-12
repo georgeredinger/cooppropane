@@ -3,5 +3,6 @@
 .rbenv-version
 .sass-cache
 tags
+secrets.sh
 
 

@@ -10,6 +10,7 @@ require 'lib/makeplot'
 require 'open-uri'
 require 'lib/propane_scrape'
 require 'lib/check_prices'
+require 'twitter'
 
 DataMapper.auto_upgrade!
 
@@ -53,5 +54,21 @@ class SkeletonApp < Sinatra::Base
       @prices=checkprices
       haml :update , :layout => :'layouts/default'
    end
+get '/tweet' do
+	  puts "Consumer_secret=#{ENV['Consumer_key']}"
+		puts "Consumer_secret=#{ENV['Consumer_secret']}"
+		puts "Access_token=#{ENV['Access_token']}"
+		puts "Access_token_secret=#{ENV['Access_token_secret']}"
+	Twitter.configure do |config|
+		config.consumer_key = ENV['Consumer_key']
+		config.consumer_secret = ENV['Consumer_secret']
+		config.oauth_token = ENV['Access_token']
+		config.oauth_token_secret = ENV['Access_token_secret']
+	end
+  Twitter.update("I'm tweeting with @gem!")
+
+	puts "cool"
+end
 end
 
+	
