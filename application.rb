@@ -55,6 +55,7 @@ class SkeletonApp < Sinatra::Base
       haml :update , :layout => :'layouts/default'
    end
 get '/tweet' do
+	puts ENV
   Twitter.configure do |config|
 		config.consumer_key = ENV['Consumer_key']
 		config.consumer_secret = ENV['Consumer_secret']
