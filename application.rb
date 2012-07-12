@@ -48,7 +48,7 @@ class SkeletonApp < Sinatra::Base
 
    get '/about' do
       haml :about, :layout => :'layouts/default'
-			ENV.each_pair {|key,value| puts "#{key}=#{value"}}
+			ENV.each_pair {|key,value| puts "#{key}=#{value}"}
    end
 
    get '/update' do
