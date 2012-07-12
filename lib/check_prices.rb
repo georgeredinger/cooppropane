@@ -51,7 +51,7 @@ def checkprices
 		config.oauth_token_secret = ENV['Access_token_secret']
 	end
 #TODO: why does Twitter.update allways thow an error?
-  Twitter.update("#{Time.now.strftime('%m/%d/%Y'}  Price per Gallon changed from $#{@price_last} to $#{price}") rescue Twitter::Error
+  Twitter.update("#{Time.now.strftime('%m/%d/%Y')}  Price per Gallon changed from $#{@price_last} to $#{price}") rescue Twitter::Error
 	
  	{:new => price,:old => @price_last}
 end
