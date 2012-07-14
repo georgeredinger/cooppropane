@@ -4,7 +4,7 @@ gem 'data_objects'
 gem 'dm-core'
 gem "dm-migrations"
 gem "dm-postgres-adapter"
-gem "dm-types"
+gem "dm-types" , "~> 1.0"
 gem 'do_postgres'
 gem "haml" 
 gem "multi_json" , "~> 1.3"
