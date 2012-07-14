@@ -1,5 +1,5 @@
 source "http://rubygems.org/"
-gem 'datamapper'
+gem 'data_mapper'
 gem 'data_objects' 
 gem 'dm-core'
 gem "dm-migrations"
