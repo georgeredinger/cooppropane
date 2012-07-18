@@ -27,18 +27,18 @@ def checkprices
 			:price =>  price.to_f
 		}
 		p.save
-	end
-	puts "#{price},#{@price_last}"
-	#TODO: only tweet on price change
-	Twitter.configure do |config|
-		config.consumer_key = ENV['Consumer_key']
-		config.consumer_secret = ENV['Consumer_secret']
-		config.oauth_token = ENV['Access_token']
-		config.oauth_token_secret = ENV['Access_token_secret']
-	end
-	#TODO: why does Twitter.update allways thow an error?
-	Twitter.update("#{Time.now.strftime('%m/%d/%Y')}  Price per Gallon changed from $#{sprintf("%2.2f",@price_last)} to $#{sprintf("%2.2f",price)}") rescue Twitter::Error
+		puts "#{price},#{@price_last}"
+		#TODO: only tweet on price change
+		Twitter.configure do |config|
+			config.consumer_key = ENV['Consumer_key']
+			config.consumer_secret = ENV['Consumer_secret']
+			config.oauth_token = ENV['Access_token']
+			config.oauth_token_secret = ENV['Access_token_secret']
+		end
+		#TODO: why does Twitter.update allways thow an error?
+		Twitter.update("#{Time.now.strftime('%m/%d/%Y')}  Price per Gallon changed from $#{sprintf("%2.2f",@price_last)} to $#{sprintf("%2.2f",price)}") rescue Twitter::Error
 
+	end
 	{:new => price,:old => @price_last}
 end
 
