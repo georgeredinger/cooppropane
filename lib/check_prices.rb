@@ -21,7 +21,7 @@ def checkprices
 	price=propane_scrape(page)
 	 if price.to_f == 0.0
      puts("zero price")
-		 return
+		 return {:new => 0.0,:old => 0.0}
 	 end
 
 	@price_last = Prices.all(:order => [:scraped_at]).last.price
