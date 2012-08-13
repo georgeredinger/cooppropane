@@ -19,6 +19,7 @@ def checkprices
 	DataMapper.setup(:default, ENV['DATABASE_URL']||"sqlite3://#{Dir.pwd}/development.db")
 	page = open("http://www.co-openergy.org").read
 	price=propane_scrape(page)
+	return if price.to_f == 0.0
 	@price_last = Prices.all(:order => [:scraped_at]).last.price
 	if price.to_s != @price_last.to_s
 		p = Prices.new
